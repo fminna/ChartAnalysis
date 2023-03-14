@@ -26,4 +26,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: fminna/my-python-project:latest
+        tags: fminna/chart_analysis:latest

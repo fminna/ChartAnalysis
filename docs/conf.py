@@ -6,8 +6,8 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'My Python Project'
-copyright = '2023, Francesco Minna'
+project = 'ChartAnalysis'
+copyright = '2023, AssureMOSS'
 author = 'Francesco Minna'
 release = '1.0'
 

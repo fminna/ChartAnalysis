@@ -1,4 +1,4 @@
-# Copyright 2023 MyOrganization
+# Copyright 2023 AssureMOSS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,11 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""The main module of my app.
+"""Running Checkov on a Helm Chart
 
 """
 
-from myapp.app import main
+import logging
 
-if __name__ == '__main__':
-    main()
+
+def json_parser():
+    """Function to run checkov on a Helm Chart.
+
+    """
+
+    logging.info('Running checkov scanner')
+
+    print('checkov')
+

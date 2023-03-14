@@ -1,4 +1,4 @@
-# Copyright 2023 MyOrganization
+# Copyright 2023 AssureMOSS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@
 import argparse
 import logging
 
-from myapp.module1.service1 import svc1_hello
-from myapp.module2.service2 import svc2_hello
+from chartanalysis.checkov_parser.output_parser import json_parser
 
 
 def parse_args():
@@ -30,15 +29,17 @@ def parse_args():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('-e',
-                        '--example',
-                        action='store_true',
-                        help='Print an example message')
+    parser.add_argument('-cp',
+                        '--checkov-parser',
+                        dest='checkov_parser',
+                        nargs=1,
+                        metavar='helm/chart/path',
+                        help='Parse checkov JSON output from Helm Chart')
 
     args = parser.parse_args()
 
     # Check that at least one argument is provided
-    if not args.example:
+    if not args.checkov_parser:
         logging.error('At least one argument is required.')
         parser.error('At least one argument is required.')
 
@@ -51,19 +52,23 @@ def main():
     """
 
     # Set up logging
-    logging.basicConfig(filename='.myproject.log',
+    logging.basicConfig(filename='.chartanalysis.log',
                         level=logging.DEBUG,
                         filemode='w')
 
     logging.info('Executing the main function...')
 
+    # Parsing user arguments
     args = parse_args()
 
-    if args.example:
-        logging.info('Executing the --example argument')
-        print('Hello world!')
-        svc1_hello()
-        svc2_hello()
+    if args.checkov_parser:
+        logging.info('Executing the --checkov-parser argument')
+        json_parser()
+
+
+
+
+
 
 
     logging.info('Exiting...')

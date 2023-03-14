@@ -1,4 +1,4 @@
-# Copyright 2023 MyOrganization
+# Copyright 2023 AssureMOSS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,19 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""A functionality implemented by my app.
+"""The main module of ChartAnalysis.
 
 """
 
-import logging
+from chartanalysis.analyzer import main
 
-def svc1_hello():
-    """Function to print Hello world from module1.
-
-    """
-
-    logging.info('module1.service1.svc1_hello()')
-
-    print('Hello world from module1!')
-
-    return True
+if __name__ == '__main__':
+    main()

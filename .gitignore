@@ -2,7 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
 # Ignoring logs
-.myproject.log
+.chartanalysis.log
 
 ### Python ###
 # Byte-compiled / optimized / DLL files

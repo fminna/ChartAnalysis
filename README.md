@@ -1,8 +1,8 @@
-# PythonSkeleton
+# ChartAnalysis
 
 [![Python package](https://github.com/fminna/python_skeleton/actions/workflows/python_test.yaml/badge.svg?branch=master)](https://github.com/fminna/python_skeleton/actions/workflows/python_test.yaml) | [![Docker build and push Image](https://github.com/fminna/python_skeleton/actions/workflows/docker_push.yaml/badge.svg?branch=master)](https://github.com/fminna/python_skeleton/actions/workflows/docker_push.yaml)
 
-A skeleton to create Python applications from scratch.
+A tool to analyze and fix Helm Charts.
 
 ----------
 
@@ -11,8 +11,8 @@ A skeleton to create Python applications from scratch.
 First, clone the repository:
 
 ```bash
-git clone https://github.com/fminna/python_skeleton.git
-cd python_scheleton
+git clone https://github.com/fminna/ChartAnalysis.git
+cd ChartAnalysis
 ```
 
 1. To run in the CLI, use the following commands:
@@ -20,28 +20,15 @@ cd python_scheleton
 ```bash
 pipenv shell
 pip install .
-myapp -h
+chartanalysis -h
 ```
 
 2. To run as a Docker container, use the following commands:
 
 ```bash
-docker build -t my-python-project .
+docker build -t chartanalysis .
 
-docker run my-python-project -h
-```
-
-3. To run as a Kubernetes deployment, use the following commands:
-
-```bash
-# First, push the Docker image to DockerHub
-docker login
-docker tag my-python-project:latest <dockerhub-username>/my-python-project:latest
-docker push <dockerhub-username>/my-python-project
-
-# Finally, run the Deployment on the K8s cluster
-# Remember to change the YAML file specifying your <dockerhub-username>
-kubectl apply -f my-python-project.yaml
+docker run chartanalysis -h
 ```
 
 ----------

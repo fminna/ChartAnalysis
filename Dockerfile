@@ -1,4 +1,4 @@
-# Copyright 2023 MyOrganization
+# Copyright 2023 AssureMOSS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,4 +25,4 @@ COPY . .
 RUN pip install .
 
 # Set the command to run when the container starts
-ENTRYPOINT [ "myapp" ] 
+ENTRYPOINT [ "chartanalysis" ] 
