@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-python-project
+spec:
+  selector:
+    matchLabels:
+      app: my-python-project
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-python-project
+    spec:
+      containers:
+      - name: my-python-project
+        image: <dockerhub-username>/my-python-project:latest
+        command: ["python", "myapp"]
