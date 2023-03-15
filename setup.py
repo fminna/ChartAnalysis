@@ -53,5 +53,7 @@ setup(
             "chartanalysis=chartanalysis.__main__:main"
         ],
     },
-    install_requires=reqs,
+    install_requires=[
+        "PyYAML==6.0"
+    ]
 )

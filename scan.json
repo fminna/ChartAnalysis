@@ -1,0 +1,737 @@
+2023-03-15 09:59:04,796 [MainThread  ] [WARNI]  Failed to get the checkov mappings and guidelines from https://www.bridgecrew.cloud/api/v2/guidelines. Skips using BC_* IDs will not work.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7f61651c3ee0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/checkov/common/bridgecrew/platform_integration.py", line 747, in get_public_run_config
+    request = self.http.request("GET", self.guidelines_api_url, headers=headers)  # type:ignore[no-untyped-call]
+  File "/usr/local/lib/python3.10/site-packages/urllib3/request.py", line 74, in request
+    return self.request_encode_url(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/request.py", line 96, in request_encode_url
+    return self.urlopen(method, url, **extra_kw)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/poolmanager.py", line 376, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 815, in urlopen
+    return self.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 815, in urlopen
+    return self.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 815, in urlopen
+    return self.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.bridgecrew.cloud', port=443): Max retries exceeded with url: /api/v2/guidelines (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f61651c3ee0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+{
+    "check_type": "helm",
+    "results": {
+        "failed_checks": [
+            {
+                "check_id": "CKV_K8S_31",
+                "bc_check_id": null,
+                "check_name": "Ensure that the seccomp profile is set to docker/default or runtime/default",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": []
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.Seccomp",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_14",
+                "bc_check_id": null,
+                "check_name": "Image Tag should be fixed - not latest or blank",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/image"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.ImageTagFixed",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_12",
+                "bc_check_id": null,
+                "check_name": "Memory requests should be set",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/resources/requests/memory"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.MemoryRequests",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_29",
+                "bc_check_id": null,
+                "check_name": "Apply security context to your pods and containers",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": []
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.PodSecurityContext",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_10",
+                "bc_check_id": null,
+                "check_name": "CPU requests should be set",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/resources/requests/cpu"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.CPURequests",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_38",
+                "bc_check_id": null,
+                "check_name": "Ensure that Service Account Tokens are only mounted where necessary",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": []
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.ServiceAccountTokens",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_8",
+                "bc_check_id": null,
+                "check_name": "Liveness Probe Should be Configured",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/livenessProbe"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.LivenessProbe",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_30",
+                "bc_check_id": null,
+                "check_name": "Apply security context to your containers",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/securityContext"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.ContainerSecurityContext",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_13",
+                "bc_check_id": null,
+                "check_name": "Memory limits should be set",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/resources/limits/memory"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.MemoryLimits",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_28",
+                "bc_check_id": null,
+                "check_name": "Minimize the admission of containers with the NET_RAW capability",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/securityContext/capabilities/drop"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.DropCapabilities",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_11",
+                "bc_check_id": null,
+                "check_name": "CPU limits should be set",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/resources/limits/cpu"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.CPULimits",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_22",
+                "bc_check_id": null,
+                "check_name": "Use read-only filesystem for containers where possible",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/securityContext/readOnlyRootFilesystem"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.ReadOnlyFilesystem",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_20",
+                "bc_check_id": null,
+                "check_name": "Containers should not run with allowPrivilegeEscalation",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/securityContext/allowPrivilegeEscalation"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.AllowPrivilegeEscalation",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_9",
+                "bc_check_id": null,
+                "check_name": "Readiness Probe Should be Configured",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/readinessProbe"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.ReadinessProbe",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_23",
+                "bc_check_id": null,
+                "check_name": "Minimize the admission of root containers",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": []
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.RootContainers",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_43",
+                "bc_check_id": null,
+                "check_name": "Image should use digest",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/image"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.ImageDigest",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_37",
+                "bc_check_id": null,
+                "check_name": "Minimize the admission of containers with capabilities assigned",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                        "spec/containers/[0]/securityContext/capabilities/drop"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.MinimizeCapabilities",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            },
+            {
+                "check_id": "CKV_K8S_40",
+                "bc_check_id": null,
+                "check_name": "Containers should run as a high UID to avoid host conflict",
+                "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": []
+                },
+                "code_block": null,
+                "file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_abs_path": "/tmp/tmpdkuryjav/busybox-pod/templates/busybox-pod.yaml",
+                "repo_file_path": "/busybox-pod/templates/busybox-pod.yaml",
+                "file_line_range": [
+                    3,
+                    12
+                ],
+                "resource": "Pod.default.busybox-pod",
+                "evaluations": {},
+                "check_class": "checkov.kubernetes.checks.resource.k8s.RootContainersHighUID",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": null
+            }
+        ]
+    },
+    "summary": {
+        "passed": 68,
+        "failed": 18,
+        "skipped": 0,
+        "parsing_errors": 0,
+        "resource_count": 1,
+        "checkov_version": "2.3.79"
+    }
+}[0m[0m[0m
+[0m[0m[0m[0m[0m

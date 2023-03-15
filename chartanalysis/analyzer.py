@@ -17,11 +17,13 @@
 import argparse
 import logging
 
-from chartanalysis.checkov_parser.output_parser import json_parser
+from chartanalysis.chart_scanner.checkov_scanner import run_checkov
+from chartanalysis.checkov_parser.scan_parser import json_parser
 
 
-def parse_args():
-    """Parses command-line arguments.
+def parse_args() -> argparse.Namespace:
+    """
+    Parses command-line arguments.
 
     Returns:
         argparse.Namespace: An object containing the parsed arguments.
@@ -29,17 +31,24 @@ def parse_args():
 
     parser = argparse.ArgumentParser()
 
+    parser.add_argument('-rc',
+                        '--run-checkov',
+                        dest='run_checkov',
+                        nargs=1,
+                        metavar='helm/chart/path',
+                        help='Run checkov on a Helm Chart')
+
     parser.add_argument('-cp',
                         '--checkov-parser',
                         dest='checkov_parser',
                         nargs=1,
-                        metavar='helm/chart/path',
+                        metavar='path/to/json',
                         help='Parse checkov JSON output from Helm Chart')
 
     args = parser.parse_args()
 
     # Check that at least one argument is provided
-    if not args.checkov_parser:
+    if not (args.run_checkov or args.checkov_parser):
         logging.error('At least one argument is required.')
         parser.error('At least one argument is required.')
 
@@ -47,7 +56,8 @@ def parse_args():
 
 
 def main():
-    """main function
+    """
+    main function
 
     """
 
@@ -61,14 +71,19 @@ def main():
     # Parsing user arguments
     args = parse_args()
 
-    if args.checkov_parser:
+    if args.run_checkov:
+        logging.info('Executing the --run-checkov argument')
+        run_checkov(args.run_checkov[0])
+
+    elif args.checkov_parser:
         logging.info('Executing the --checkov-parser argument')
-        json_parser()
+        json_parser(args.checkov_parser[0])
 
+    # run_cavisor
 
+    # create_seccomp
 
-
-
+    # create_apparmor
 
 
     logging.info('Exiting...')

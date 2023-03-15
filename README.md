@@ -11,8 +11,8 @@ A tool to analyze and fix Helm Charts.
 First, clone the repository:
 
 ```bash
-git clone https://github.com/fminna/ChartAnalysis.git
-cd ChartAnalysis
+git clone https://github.com/fminna/chart_analysis.git
+cd chart_analysis
 ```
 
 1. To run in the CLI, use the following commands:

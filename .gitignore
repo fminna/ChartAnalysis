@@ -4,6 +4,9 @@
 # Ignoring logs
 .chartanalysis.log
 
+Pipfile
+requirements.txt
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
